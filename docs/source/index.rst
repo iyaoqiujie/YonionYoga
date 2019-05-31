@@ -8,8 +8,8 @@ Welcome to YonionYoga's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   CMS/壁纸
 
 
 Indices and tables
