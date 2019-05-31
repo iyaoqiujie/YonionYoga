@@ -1,0 +1,91 @@
+{% load static yonion_tags %}
+
+<header>
+    <div class="headers">
+        <div class="headers-box">
+            <div class="slogan">欢迎光临有你瑜伽学院</div>
+            <div class="tel">
+                <i class="icon fonticon icon-tel1"></i> 服务热线：400-XXXX-XXXX
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <!-- 导航 -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <div class="nav-logo"><img src="{% static 'images/logo.png' %}"> </div>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <span class="navbar-brand">
+                        <h1></h1>
+                    </span>
+                </div>
+
+                <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="sub ">
+                            <a class="logo" href="/"><img src="{% static 'images/logo.png' %}" alt="home"></a>
+                        </li>
+                        <li class="sub {% ifequal page.title "有你瑜伽学院" %}  selected {% endifequal %}">
+                            <a href="/" >网站首页</a>
+                        </li>
+                        <li class="sub {% if page.url|contains:"aboutus" %} selected {% endif %}">
+                            <a href="/aboutus/intro" >关于我们</a>
+                        </li>
+                        <li class="sub {% if page.url|contains:"course" %} selected {% endif %}">
+                            <a href="/course/?cate=workshop" >热门课程</a>
+                        </li>
+                        <li class="sub {% if page.url|contains:"mentor" %} selected {% endif %}">
+                            <a href="/mentor/?cate=signing" >师资队伍</a>
+                        </li>
+                        <li class="sub {% if page.url|contains:"trainee" %} selected {% endif %}">
+                            <a href="/trainee/?cate=story" >学员动态</a>
+                        </li>
+                        <li class="sub {% if page.url|contains:"news" %} selected {% endif %}">
+                            <a href="/news/?cate=news" >热点资讯</a>
+                        </li>
+                        <li class="sub {% if page.url|contains:"aboutcert" %} selected {% endif %}">
+                            <a href="/aboutcert/querycert" >证书查询</a>
+                        </li>
+                    </ul>
+                    <div class="nav navbar-search">
+                        <div class="search">
+                            <form role="form" id="Search" method="get" action="/search">
+                            <div class="input-group">
+                                <input type="text" placeholder="关键词" name="query" id="query" class="form-control">
+                                <span class="input-group-btn">
+                                    <button id="Search_btn" class="btn btn-default" type="button">
+                                        <i class="icon fonticon icon-search3"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            </form>
+                        </div>
+
+                        <script language="javascript">
+                          $(document).ready(function () {
+                            $("#Search_btn").click(function () {
+                              var keyword = $("#keyword").val();
+                              if (keyword == "") {
+                                $("#keyword").addClass("has-error");
+                                $("#keyword").focus();
+                                return false;
+                              }else {
+                                $("#keyword").removeClass("has-error");
+                                $("#Search").submit();
+                              }
+                            });
+                          });
+                        </script>
+                        <div class="tel hidden"><i class="icon fonticon icon-tel1"></i> 400-XXXX-XXXX</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

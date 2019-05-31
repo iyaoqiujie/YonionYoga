@@ -1,0 +1,23 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<div class="col-md-12 col-md-first col-md-last">
+    <ul class="crumb_menu wow fadeInUp">
+    <div id="bread_crumbs">
+        <div class="crumb_box clear">
+            <ul class="crumb_menu">
+                <li><a href="/">首页</a><span></span></li>
+            </ul>
+        </div>
+    </div>
+    </ul>
+</div>
+
+<div class="fix" style="height:50px;"></div>
+<div class="nav2 wow fadeInUp">
+    <a href="/aboutus/intro" {% if "intro" in page.url %} class="on" {% endif %}>学院简介</a>
+    <a href="/aboutus/milestone" {% if "milestone" in page.url %} class="on" {% endif %}>发展历程</a>
+    <a href="/aboutus/environment" {% if "environment" in page.url %} class="on" {% endif %}>学习环境</a>
+    <a href="/aboutus/cobranch" {% if "cobranch" in page.url %} class="on" {% endif %}>合作机构</a>
+    <a href="/aboutus/contactus" {% if "contactus" in page.url %} class="on" {% endif %}>联系我们</a>
+</div>
+<div class="fix" style="height:50px;"></div>

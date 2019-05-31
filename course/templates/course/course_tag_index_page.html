@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="clear"></div><!-- 内容main开始 -->
+    <!-- banner -->
+    {% image wallpaper original as wallpaper_original %}
+    <div id="banner2" style="background: url('{{ wallpaper_original.url }}') center top / cover no-repeat;"></div>
+
+    <!-- content -->
+    <div class="product main-wrap" id="product">
+        <div class="col-md-12 col-md-first col-md-last">
+            <ul class="crumb_menu wow fadeInUp">
+            <div id="bread_crumbs">
+                <div class="crumb_box clear">
+                    <ul class="crumb_menu">
+                        <li><a href="/">首页</a><span> ></span></li>
+                        <li><a href="/course/?cate=faculty">热门课程</a></li>
+                    </ul>
+                </div>
+            </div>
+            </ul>
+        </div>
+
+        <div class="fix" style="height:50px;"></div>
+        <div class="nav2 wow fadeInUp">
+
+            <a href="{% slugurl 'course' %}?cate=faculty"  {% if cate == 'faculty' %} class="on" {% endif %}>师资培训</a>
+            <a href="{% slugurl 'course' %}?cate=workshop" {% if cate == 'workshop' %} class="on" {% endif %}>名师工作坊</a>
+        </div>
+        <!-- Second menu -->
+        {% ifequal cate "faculty" %}
+            <div class="fix" style="height:25px;"></div>
+            <div class="nav-main wow fadeInUp" align="center">
+                <a href="{% slugurl 'course' %}?cate=faculty&tag=全美瑜伽联盟师资培训"  {% if tag == '全美瑜伽联盟师资培训' %} class="on" {% endif %}>&nbsp;&nbsp;全美瑜伽联盟师资培训&nbsp;&nbsp;</a>
+                <a href="{% slugurl 'course' %}?cate=faculty&tag=曼丽丘" {% if tag == '曼丽丘' %} class="on" {% endif %}>&nbsp;&nbsp;曼丽丘&nbsp;&nbsp;</a>
+                <a href="{% slugurl 'course' %}?cate=faculty&tag=LINKd" {% if tag == 'LINKd' %} class="on" {% endif %}>&nbsp;&nbsp;LINKd&nbsp;&nbsp;</a>
+                <a href="{% slugurl 'course' %}?cate=faculty&tag=有你名师工作坊" {% if tag == '有你名师工作坊' %} class="on" {% endif %}>&nbsp;&nbsp;有你名师工作坊&nbsp;&nbsp;</a>
+            </div>
+        {% endifequal %}
+
+        <div class="fix" style="height:50px;"></div>
+        <div class="bg-white wow fadeInUp">
+            <div class="w1200">
+                {% for coursepage in coursepages %}
+                <div class="col-md-12 col-md-first col-md-last none-p">
+                        <div class="row">
+                            <div class="col-md-6 col-md-first">
+                                <div class="sitewidget-bd">
+                                    {% with coursepage.main_image as main_image %}
+                                    <a class="imgBox-rmkc mobile-imgBox" href="{% pageurl coursepage %}">
+                                        {% image main_image max-600x400 %}
+                                        <span class="picture-description-bg hidden"></span>
+                                        <span class="picture-description">
+                                        <span class="ccc1"></span>
+                                        <span class="ccc2"></span>
+                                    </span>
+                                    </a>
+                                    {% endwith %}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-md-first">
+                                <div class="sitewidget-bd">
+                                    <div class="k-box">
+                                        <div class="k-t1"><a href="{% pageurl coursepage %}">{{ coursepage.title }}</a></div>
+                                        <div class="k-t2">{{ coursepage.plan }}</div>
+                                        <div class="fix" style="height: 30px;"></div>
+                                        <div class="k-t3">{{ coursepage.advantage }}<br/><br/>
+                                            {{ coursepage.intro }}
+                                        </div>
+                                        <div class="k-more"><a href="{% pageurl coursepage %}">点击了解详情>></a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="fix" style="height: 50px;"></div>
+                {% endfor %}
+
+
+                <!-- 分页开始 -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        {% if coursepages.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?tag={{ tag }}&page={{ coursepages.previous_page_number }}">&laquo;</a>
+                            </li>
+                        {% endif %}
+                        {% for page_num in coursepages.paginator.page_range %}
+                            <li {% if page_num == coursepages.number %} class="active page-item"{% endif %}>
+                                <a class="page-link" href="?tag={{ tag }}&page={{ page_num }}">{{ page_num }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if coursepages.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?tag={{ tag }}&page={{ coursepages.next_page_number }}">&raquo;</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <!-- 分页结束 -->
+
+                <div class="fix" style="height: 50px;"></div>
+            </div>
+        </div>
+
+
+        <div class="bg-else wow fadeInUp">
+            <div class="w1200">
+
+                <div class="col-md-12 col-md-first col-md-last">
+                    <div class="row">
+
+                        <div class="fix" style="height:50px;"></div>
+
+                                            <div class="col-md-4 col-md-first">
+                            <div class="sitewidget-bd">
+                                <div class="else-m">
+                                    <p class="else-title">ABOUT COURSE</p>
+                                    <p class="else-second-title" data-wow-delay="0.5s">关于课程</p>
+                                    <p class="else-text" data-wow-delay="0.5s">学院专门针对瑜伽习练者开设瑜伽师资认证、一线导师提升工作坊等专业性课程</p>
+                                    <div class="fix" style="height: 20px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="col-md-4 col-md-first">
+                            <div class="sitewidget-bd">
+                                <div class="else-m">
+                                    <p class="else-title">DETAILS</p>
+                                    <p class="else-second-title" data-wow-delay="0.5s">如何上课</p>
+                                    <p class="else-text" data-wow-delay="0.5s">每天9：00-18：00开设课程，上课请提前与工作人员联系</p>
+                                    <div class="fix" style="height: 20px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="col-md-4 col-md-first">
+                            <div class="sitewidget-bd">
+                                <div class="else-m">
+                                    <p class="else-title">PROCESS</p>
+                                    <p class="else-second-title" data-wow-delay="0.5s">报名流程</p>
+                                    <p class="else-text" data-wow-delay="0.5s">1、添加课程老师；
+    2、预约线下测试；
+    3、填写入学申请表；
+    4、缴纳学费完成报名</p>
+                                    <div class="fix" style="height: 20px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fix" style="height:50px;"></div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  $(document).ready(function () {
+
+    $('.VivaTimeline').vivaTimeline({
+      carousel: true,
+      carouselTime: 3000
+    });
+
+    $("#submit_btn").click(function () {
+      var apply_name = $("#apply_name").val();
+      var apply_phone = $("#apply_phone").val();
+      var apply_content = $("#apply_content").val();
+      if (apply_name == "") {
+        $("#apply_name").addClass("has-error");
+        $("#apply_name").focus();
+        return false;
+      } else if (apply_phone == "") {
+        $("#apply_name").removeClass("has-error");
+        $("#apply_phone").addClass("has-error");
+        $("#apply_phone").focus();
+        return false;
+      } else if (apply_content == "") {
+        $("#apply_name").removeClass("has-error");
+        $("#apply_phone").removeClass("has-error");
+        $("#apply_content").addClass("has-error");
+        $("#apply_content").focus();
+        return false;
+      } else {
+        $("#apply_content").removeClass("has-error");
+        $("#apply_form").submit();
+      }
+    });
+  });
+
+
+  var wow = new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+  });
+  wow.init();
+
+  function display(li){
+    li.className='sub active';
+    var subdis=li.getElementsByTagName("ul")[0];
+    subdis.style.display="block";
+  }
+  function ndisplay(li){
+    li.className='sub noactive';
+    var subdis=li.getElementsByTagName("ul")[0];
+    subdis.style.display="None";
+  }
+  var preBtn=document.querySelectorAll('.pre-btn');
+  for (var j=0; j<preBtn.length; j++) {
+    preBtn[j].onclick = function(){
+      this.style.display='none';
+      this.parentNode.querySelector('.pre-load').style.display='none';
+      myframe=this.parentNode.querySelector('iframe');
+      framesrc=myframe.attributes["data-src"].value;
+      myframe.setAttribute("src",framesrc);
+    }
+  }
+</script>
+{% endblock %}

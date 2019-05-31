@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-mentorpage{% endblock %}
+
+{% block content %}
+    <div class="clear"></div><!-- 内容main开始 -->
+    <!-- banner -->
+    {% image wallpaper original as wallpaper_original %}
+    <div id="banner2" style="background: url('{{ wallpaper_original.url }}') center top / cover no-repeat;"></div>
+
+
+    <!-- content -->
+    <div class="product main-wrap" id="product">
+        <div class="col-md-12 col-md-first col-md-last">
+            <ul class="crumb_menu wow fadeInUp">
+            <div id="bread_crumbs">
+                <div class="crumb_box clear">
+                    <ul class="crumb_menu">
+                        <li><a href="/">首页</a><span> ></span></li>
+                        <li><a href="/aboutcert/querycert">证书查询</a></li>
+                    </ul>
+                </div>
+            </div>
+            </ul>
+        </div>
+        <div class="fix"></div>
+        <div class="content col-md-12 col-md-first col-md-last wow fadeInUp">
+
+            <div class="content_text">
+                <div class="content_title">{{ page.title }}</div>
+
+                <div class="content_title_s">
+                    <em>
+                        <u>发布日期</u>
+                        <i class="fa fa-clock-o"></i>
+                        {{ page.date }}                    &nbsp;·&nbsp;
+                        来源<i class="fa fa-smile-o"></i>
+                        有你瑜伽学院
+                    </em>
+                </div>
+                <div class="fix"></div>
+                <div>
+                    <div style="text-align:center;">
+                        {% for block in page.body %}
+                            {% if block.block_type == "图片" %}
+                                <p align="center">
+                                {% image block.value width-1000 %}
+                                </p>
+                            {% else %}
+                                {% include_block block %}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+
+                <div class="fix" style="height: 50px;"></div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extra_js %}
+<script>
+  $(document).ready(function () {
+
+    $('.VivaTimeline').vivaTimeline({
+      carousel: true,
+      carouselTime: 3000
+    });
+
+    $("#submit_btn").click(function () {
+      var apply_name = $("#apply_name").val();
+      var apply_phone = $("#apply_phone").val();
+      var apply_content = $("#apply_content").val();
+      if (apply_name == "") {
+        $("#apply_name").addClass("has-error");
+        $("#apply_name").focus();
+        return false;
+      } else if (apply_phone == "") {
+        $("#apply_name").removeClass("has-error");
+        $("#apply_phone").addClass("has-error");
+        $("#apply_phone").focus();
+        return false;
+      } else if (apply_content == "") {
+        $("#apply_name").removeClass("has-error");
+        $("#apply_phone").removeClass("has-error");
+        $("#apply_content").addClass("has-error");
+        $("#apply_content").focus();
+        return false;
+      } else {
+        $("#apply_content").removeClass("has-error");
+        $("#apply_form").submit();
+      }
+    });
+  });
+
+
+  var wow = new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+  });
+  wow.init();
+
+  function display(li){
+    li.className='sub active';
+    var subdis=li.getElementsByTagName("ul")[0];
+    subdis.style.display="block";
+  }
+  function ndisplay(li){
+    li.className='sub noactive';
+    var subdis=li.getElementsByTagName("ul")[0];
+    subdis.style.display="None";
+  }
+  var preBtn=document.querySelectorAll('.pre-btn');
+  for (var j=0; j<preBtn.length; j++) {
+    preBtn[j].onclick = function(){
+      this.style.display='none';
+      this.parentNode.querySelector('.pre-load').style.display='none';
+      myframe=this.parentNode.querySelector('iframe');
+      framesrc=myframe.attributes["data-src"].value;
+      myframe.setAttribute("src",framesrc);
+    }
+  }
+</script>
+{% endblock %}

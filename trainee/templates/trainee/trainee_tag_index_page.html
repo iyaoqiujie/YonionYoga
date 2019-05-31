@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="clear"></div><!-- 内容main开始 -->
+    <!-- banner -->
+    {% image wallpaper original as wallpaper_original %}
+    <div id="banner2" style="background: url('{{ wallpaper_original.url }}') center top / cover no-repeat;"></div>
+
+    <!-- content -->
+    <div class="product main-wrap" id="product">
+
+        <div class="col-md-12 col-md-first col-md-last">
+        <ul class="crumb_menu wow fadeInUp">
+        <div id="bread_crumbs">
+            <div class="crumb_box clear">
+                <ul class="crumb_menu">
+                    <li><a href="/">首页</a><span> ></span></li>
+                    <li><a href="/trainee/?cate=story">学员动态</a></li>
+                </ul>
+            </div>
+        </div>
+        </ul>
+        </div>
+
+        <div class="fix" style="height:50px;"></div>
+        <div class="nav2 wow fadeInUp">
+
+            <a href="{% slugurl 'trainee' %}?cate=story" {% if cate == 'story' %} class="on" {% endif %}>蜕变故事</a>
+            <a href="{% slugurl 'trainee' %}?cate=picture" {% if cate == 'picture' %} class="on" {% endif %}>瑜伽图片</a>
+            <a href="{% slugurl 'trainee' %}?cate=video" {% if cate == 'video' %} class="on" {% endif %}>瑜伽光影</a>
+        </div>
+
+        <div class="fix" style="height:50px;"></div>
+
+        <!-- TraineeList start -->
+        <div class="bg-white wow fadeInUp">
+            <div class="w1200">
+                {% ifequal cate "story" %}
+                <div class="yezhu_box row p5">
+                    <div class="area">
+                        <div class="yezhu_say_box slick-initialized slick-slider">
+                            {% for traineepage in traineepages %}
+                            <div class="slick-slide slick-cloned">
+                                <div class="slide">
+                                    <a href="{% pageurl traineepage %}" title="{{ traineepage.title }}" class="slide">
+                                        {% with traineepage.thumbnail_image as thumbnail_image %}
+                                        <div class="img">
+                                            {% image thumbnail_image fill-380x254 %}
+                                            <img src="../../uploads/images/201808/b3c9d88f41f.png" alt="{{ traineepage.title }}" />
+                                        </div>
+                                        <div class="photo">
+                                            <div class="bg">
+                                            </div>
+                                            {% image thumbnail_image fill-50x50 %}
+                                            <img src="../../uploads/images/201808/b3c9d88f41f.png" alt="一起完善自我，一起丰富人生轨迹" />
+                                        </div>
+                                        {% endwith %}
+                                        <div class="name">{{ traineepage.name }}</div>
+                                        <div class="yz_title">{{ traineepage.title }}</div>
+                                        <div class="text">
+                                            <div class="bg"></div>
+                                            <div class="txt"> {{ traineepage.intro|richtext }}</div>
+											<div class="txt2" href="{% pageurl traineepage %}">阅读全部</div>
+                                        </div>
+                                    </a>
+                                </div> <!-- end of slide -->
+                            </div> <!-- end of slick-slide -->
+                            {% endfor %}
+                        </div> <!-- end of yezhu_say_box -->
+                    </div> <!-- end of area -->
+                </div> <!-- end of yezhu_box -->
+                {% endifequal %}
+
+                {% ifequal cate "picture" %}
+                <div class="col-md-12 col-md-first col-md-last">
+                    <div class="row p5">
+                        <div id="tb0012" class="swiper-container">
+                            <div class="col-md-first col-md-last">
+                                {% for traineepage in traineepages %}
+                                <div class="swiper-slide col-md-4 col-md-first">
+                                    {% with traineepage.thumbnail_image as thumbnail_image %}
+                                    <div class="img">
+                                        {% image thumbnail_image fill-380x255 %}
+                                    </div>
+                                    {% endwith %}
+                                    <div class="info-bg"></div>
+                                    <div class="infob"></div>
+                                    <div class="info">
+                                        <div class="info_title">
+                                            <a href="{% pageurl traineepage %}" title="{{ traineepage.title }}">{{ traineepage.title }}</a><br/></div>
+                                        <div class="info_c"></div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endifequal %}
+
+                {% ifequal cate "video" %}
+                <div class="col-md-12 col-md-first col-md-last">
+                    <div class="row p5">
+                        {% for traineepage in traineepages %}
+                        <div class="col-md-4 col-md-first">
+                            <div class="sitewidget-bd">
+                                <a class="imgBox-gyyj mobile-imgBox" href="{% pageurl traineepage  %}" title="{{ traineepage.title }}">
+                                    {% with traineepage.thumbnail_image as thumbnail_image %}
+                                        {% image thumbnail_image fill-370x232 %}
+                                    {% endwith %}
+                                    <span class="picture-description-bg"></span>
+                                    <span class="picture-description">
+                                <span class="ccc1">{{ traineepage.title }}</span>
+                                <span class="ccc2"></span>
+                            </span>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endifequal %}
+
+                <div class="fix" style="height: 25px;"></div>
+
+
+                <!-- 分页开始 -->
+                <div id="page">
+                    <ul id="yw0" class="yiiPager">
+                        {% if traineepages.has_previous %}
+                        <li class="prev_page"><a href="?tag={{ tag }}&cate={{ cate }}&page={{ traineepages.previous_page_number }}">&laquo;</a></li>
+                        {% endif %}
+                        {% for page_num in traineepages.paginator.page_range %}
+                            <li class="page  {% if page_num == traineepages.number %} selected {% endif %}">
+                                <a href="?tag={{ tag }}&cate={{ cate }}&page={{ page_num }}">{{ page_num }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if traineepages.has_next %}
+                        <li class="next_page"><a href="tag={{ tag }}&cate={{ cate }}&page={{ traineepages.next_page_number }}">&raquo;</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="fix" style="height: 50px;"></div>
+                <!-- 分页结束 -->
+
+                <div class="fix" style="height: 50px;"></div>
+            </div>
+        </div>
+
+        {% include "course/you_may_like_page.html" %}
+        {% include "course/about_course_footer.html" %}
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  $(document).ready(function () {
+
+    $('.VivaTimeline').vivaTimeline({
+      carousel: true,
+      carouselTime: 3000
+    });
+
+    $("#submit_btn").click(function () {
+      var apply_name = $("#apply_name").val();
+      var apply_phone = $("#apply_phone").val();
+      var apply_content = $("#apply_content").val();
+      if (apply_name == "") {
+        $("#apply_name").addClass("has-error");
+        $("#apply_name").focus();
+        return false;
+      } else if (apply_phone == "") {
+        $("#apply_name").removeClass("has-error");
+        $("#apply_phone").addClass("has-error");
+        $("#apply_phone").focus();
+        return false;
+      } else if (apply_content == "") {
+        $("#apply_name").removeClass("has-error");
+        $("#apply_phone").removeClass("has-error");
+        $("#apply_content").addClass("has-error");
+        $("#apply_content").focus();
+        return false;
+      } else {
+        $("#apply_content").removeClass("has-error");
+        $("#apply_form").submit();
+      }
+    });
+  });
+
+
+  var wow = new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+  });
+  wow.init();
+
+  function display(li){
+    li.className='sub active';
+    var subdis=li.getElementsByTagName("ul")[0];
+    subdis.style.display="block";
+  }
+  function ndisplay(li){
+    li.className='sub noactive';
+    var subdis=li.getElementsByTagName("ul")[0];
+    subdis.style.display="None";
+  }
+  var preBtn=document.querySelectorAll('.pre-btn');
+  for (var j=0; j<preBtn.length; j++) {
+    preBtn[j].onclick = function(){
+      this.style.display='none';
+      this.parentNode.querySelector('.pre-load').style.display='none';
+      myframe=this.parentNode.querySelector('iframe');
+      framesrc=myframe.attributes["data-src"].value;
+      myframe.setAttribute("src",framesrc);
+    }
+  }
+</script>
+{% endblock %}

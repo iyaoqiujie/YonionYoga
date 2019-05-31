@@ -1,0 +1,608 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+
+{% block content %}
+    <div class="clear"></div>
+
+    <!-- banner 开始 -->
+    <div class="swiper-container-banner" id="banner">
+        <div class="swiper-wrapper">
+            {% for wallpaper in wallpapers %}
+                {% image wallpaper original as wallpaper_original %}
+                <div class="swiper-slide" style="background: url('{{ wallpaper_original.url }}') center top no-repeat; height:inherit; background-size:cover;">
+                    <a href="{{ wallpaper.title }}" title="banner"></a>
+                </div>
+            {% endfor %}
+        </div>
+        <div id="swiper-button-banner">
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+            <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+        </div>
+        <div class="fix" style="height: 50px;"></div>
+    </div>
+    <!-- banner 结束 -->
+
+    <!-- 选择 开始 -->
+    <div class="tb001 main-wrap" id="tb001">
+        <div class="main-title black-title">
+            <div class="fix" style="height: 30px;"></div>
+            <p class="big-title">为什么选择有你瑜伽学院</p>
+            <p class="second-title wow fadeInUp hidden" data-wow-delay="0.5s"></p>
+
+        </div>
+
+        <div class="tb001_box">
+
+            <div class="row">
+
+                <div class="tb001-wrap col-md-3 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>10<span>年</span></li>
+                        <li>瑜伽教培经验，品牌保证</li>
+                    </ul>
+                </div>
+
+
+                <div class="tb001-wrap col-md-3 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>1V1<span>跟进</span></li>
+                        <li>教学，效果保证</li>
+                    </ul>
+                </div>
+
+                <div class="tb001-wrap col-md-3 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>800+<span>家</span></li>
+                        <li>合作单位，就业保证</li>
+                    </ul>
+                </div>
+
+                <div class="tb001-wrap col-md-3 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>100%<span>承诺</span></li>
+                        <li>教学结果，实力保证</li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="fix" style="height: 30px;"></div>
+    </div>
+    <!-- 选择 结束 -->
+
+
+    <!-- 优势  开始 -->
+    <div class="tb002 main-wrap" id="tb002">
+        <div class="main-title black-title">
+            <div class="fix" style="height: 30px;"></div>
+            <p class="big-title">有你瑜伽学院可以带给我什么</p>
+            <p class="second-title" data-wow-delay="0.5s">更自由，更健康，全力以赴做自己</p>
+
+        </div>
+
+        <div class="tb002_box">
+
+            <div class="row">
+
+                <div class="tb002-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>
+                            <i class="icon fonticon icon-1"></i>
+                        </li>
+                        <li>高薪就业，万元起步</li>
+                        <li>
+                            120/小时起步，学员平均薪资<br/>
+                            高出市场平均水平50%
+                        </li>
+                        <li>
+                    </ul>
+                </div>
+
+                <div class="tb002-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>
+                            <i class="icon fonticon icon-2"></i>
+                        </li>
+                        <li>形象升级，塑形美体</li>
+                        <li>
+                            减重，增肌，形体，<br/>
+                            健康改善这都不是问题
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tb002-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>
+                            <i class="icon fonticon icon-3"></i>
+                        </li>
+                        <li>知识升级</li>
+                        <li>
+                            瑜伽大牛带你解锁哲学，<br/>
+                            解剖，呼吸，正位...
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tb002-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>
+                            <i class="icon fonticon icon-4"></i>
+                        </li>
+                        <li>自我实现</li>
+                        <li>
+                            站在讲台上闪闪发光的职业瑜伽老师
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tb002-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>
+                            <i class="icon fonticon icon-5"></i>
+                        </li>
+                        <li>自由职业，轻松自在</li>
+                        <li>
+                            从此不再加班加点，不再<br/>
+                            用自己的青春换别人的明天
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tb002-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <li>
+                            <i class="icon fonticon icon-61"></i>
+                        </li>
+                        <li>技术成长</li>
+                        <li>
+                            独创体系，助力从业者再次技术成长
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="fix" style="height: 50px;"></div>
+    </div>
+    <!-- 优势  结束 -->
+
+    <!-- 课程介绍 开始 -->
+    <div class="tb003 main-wrap" id="tb003">
+        <div class="main-title black-title">
+            <div class="fix" style="height: 30px;"></div>
+            <p class="big-title">多种瑜伽课程设置，全面成长</p>
+            <p class="second-title" data-wow-delay="0.5s">在这里，学到你需要的所有知识</p>
+
+        </div>
+
+        <div class="tb003_box">
+
+            <div class="row">
+
+                <div class="tb003-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <div class="left">
+                            <i class="icon fonticon icon-10"></i>
+                        </div>
+                        <div class="right">
+                            <li>零基础瑜伽培训课程</li>
+                            <li>
+                                瑜伽小白到达人的必备课程，系统<br/>
+                                学习瑜伽知识，完成独自授课的技能。
+                            </li>
+                            <li><a href="/course">课程详情>></a> </li>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="tb003-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <div class="left">
+                            <i class="icon fonticon icon-11"></i>
+                        </div>
+                        <div class="right">
+                            <li>瑜伽流派主题课程</li>
+                            <li>
+                                寰宇、阿斯汤、火箭流... ...<br/>
+                                各大流派精修课程，集百家之所长。
+                            </li>
+                            <li><a href="/course">课程详情>></a> </li>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="tb003-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <div class="left">
+                            <i class="icon fonticon icon-9"></i>
+                        </div>
+                        <div class="right">
+                            <li>瑜伽体式晋升课程</li>
+                            <li>
+                                科学安全解锁体式，后弯<br/>
+                                倒立不是难事！
+                            </li>
+                            <li><a href="/course">课程详情</a> </li>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="tb003-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <div class="left">
+                            <i class="icon fonticon icon-6"></i>
+                        </div>
+                        <div class="right">
+                            <li>瑜伽专项精修课程</li>
+                            <li>
+                                解剖、评估、正位、哲学等版块<br/>
+                                理论知的升级精修，让理论更上层楼。
+                            </li>
+                            <li><a href="/course">课程详情>></a> </li>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="tb003-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <ul>
+                        <div class="left">
+                            <i class="icon fonticon icon-7"></i>
+                        </div>
+                        <div class="right">
+                            <li>WORKSHOP</li>
+                            <li>
+                                每年30余场工作坊，10余名嘉宾，<br/>
+                                1000余名听众，在这里与名师近距离接触。
+                            </li>
+                            <li><a href="/course">课程详情>></a> </li>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="tb003-wrap col-md-4 col-md-first" data-wow-delay="0.8s">
+                    <div>
+                        <div class="left">
+                            <i class="icon fonticon icon-12"></i>
+                        </div>
+                        <div class="right">
+                            <li>瑜伽创意编排课程</li>
+                            <li>
+                                掌握编排逻辑，口令艺术，<br/>
+                                让你的练习更具创意。
+                            </li>
+                            <li><a href="/course">课程详情>></a> </li>
+                        </div>
+                    </div>
+                </div>
+                <div class="fix" style="height: 30px;"></div>
+
+            </div>
+
+        </div>
+        <div class="fix" style="height: 50px;"></div>
+
+    </div>
+    <!-- 课程介绍 结束 -->
+
+    <!-- 课程 开始 -->
+    <div class="tb004 main-wrap" id="tb004">
+        <div class="main-title black-title">
+            <p class="big-title">灵活多样的瑜伽课程，满足不同的需求</p>
+            <p class="second-title" data-wow-delay="0.5s">全方位系统提升，让每个学员走的更长远</p>
+            <div class="fix" style="height: 20px;"></div>
+        </div>
+
+        <div class="tb004_box">
+            <div class="row">
+                {% for coursepage in coursepages %}
+                <div class="col-md-4 col-md-first">
+                    <div class="sitewidget-bd">
+                        {% with coursepage.main_image as main_image %}
+                        <a class="imgBox-msgf mobile-imgBox" href="{% pageurl coursepage %}" title="{{ coursepage.title }}">
+                            {% image main_image max-600x400 %}
+                            <span class="picture-description-bg"></span>
+                            <span class="picture-description">
+                                <span class="ccc1">{{ coursepage.title }}</span>
+                                <span class="ccc2"></span>
+                            </span>
+                        </a>
+                        {% endwith %}
+                    </div>
+                    <div class="sitewidget-bd2">
+                        <li class="ccc3" style="display:none;">{{ coursepage.plan }}</li>
+                        <li class="ccc4"><a href="{% pageurl coursepage %}">了解班型详情</a></li>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="fix" style="height: 50px;"></div>
+    </div>
+
+    <div class="fix"></div>
+
+    <!-- 课程 结束 -->
+
+    <!-- 教练团队 开始 -->
+    <div class="tb005">
+        <div class="main-wrap">
+            <div class="main-title black-title">
+                <p class="big-title">专业瑜伽教练团队，匠心做教培</p>
+                <p class="second-title" data-wow-delay="0.5s">平均五年以上教育经验，确保学员利益</p>
+            </div>
+
+        </div>
+
+        <div class="window-back">
+            <div id="tb005" class="swiper-container">
+                <div class="col-md-first col-md-last swiper-wrapper">
+                    {% for mentorpage in mentorpages %}
+                    <div class="swiper-slide col-md-3 col-md-first">
+                        {% with mentorpage.thumbnail_image as thumbnail_image %}
+                        <div class="img">
+                            {% image thumbnail_image fill-348x448 %}
+                        </div>
+                        <div class="info-bg"></div>
+                        <div class="info">
+                            <div class="date"></div>
+                            {% image thumbnail_image fill-50x50 %}
+                            {% endwith %}
+                            <h3><a href="javascript:void(0);">{{ mentorpage.title }}({{ mentorpage.mentortitle }})</a></h3>
+                            <p>{{ mentorpage.mentortitle }}</p>
+                            <a href="{% pageurl mentorpage %}" title="{{ mentorpage.title }}({{ mentorpage.mentortitle }})" class="btn">详情</a>
+                        </div>
+                        <div class="info2">
+                            <div class="date"></div>
+                            <li></li>
+                            <li><span></span><span></span></li>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="swiper-button-tb005">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+                <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+            </div>
+
+            <div class="fix" style="height: 50px;"></div>
+            </div>
+        <div class="fix" style="height: 30px;"></div>
+    </div>
+
+    <div class="fix"></div>
+
+    <!-- 教练团队 结束 -->
+
+    <!-- 专业院校 开始 -->
+    <div class="tb006">
+        <div class="fix" style="height: 30px;"></div>
+        <div class="main-wrap">
+            <div class="main-title black-title">
+                <p class="big-title">专业院校打造核心优势</p>
+                <p class="second-title hidden" data-wow-delay="0.5s"></p>
+            </div>
+        </div>
+
+        <div id="tagsList" class="tb006_box">
+            <ul>
+                <li><a href="/mentor/?cate=signing" title="瑜伽师资队伍" target="_blank">瑜伽师资队伍</a></li>
+                <li><a href="/course/?cate=faculty" title="热门课程" target="_blank">热门课程</a></li>
+                <li><a href="/course/?cate=workshop" title="名师工作坊" target="_blank">名师工作坊</a></li>
+                <li><a href="/news/?cate=news" title="热点资讯" target="_blank">热点资讯</a></li>
+                <li><a href="/aboutcert/querycert/" title="证书查询" target="_blank">证书查询</a></li>
+                <li><a href="/trainee/?cate=story" title="蜕变故事" target="_blank">蜕变故事</a></li>
+                <li><a href="/trainee/?cate=video" title="瑜伽光影" target="_blank">瑜伽光影</a></li>
+                <li><a href="/trainee/?cate=picture" title="瑜伽写真" target="_blank">户外写真</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="{% static "themes/default/styles/js/tags.js" %}"></script>
+    <!-- 专业院校 结束 -->
+
+
+    <!-- 就业案例 开始 -->
+    <div class="tb007 main-wrap" id="tb007">
+        <div class="main-title black-title">
+            <div class="fix" style="height: 30px;"></div>
+            <p class="big-title">真实就业案例，数千学生的选择</p>
+            <p class="second-title" data-wow-delay="0.5s"></p>
+        </div>
+
+        <div class="tb007_box">
+            <div class="row">
+                {% for post in traineepages %}
+                <div class="tb007-wrap col-md-6 col-md-first" data-wow-delay="0.8s">
+                    <div>
+                        <div class="top-info">{{ post.intro|richtext }}</div>
+                        <div class="left">
+                            {% with post.thumbnail_image as thumbnail_image %}
+                            <a href="{% pageurl post %}" title="自己的蜕变">
+                                {% image thumbnail_image fill-70x70 %}
+                            </a>
+                            {% endwith %}
+                        </div>
+                        <div class="right">
+                            <div style="height: 10px;"></div>
+                            <li>姓名：<a href="{% pageurl post %}" title="{{ post.titile }}">{{ post.name }}</a></li>
+                            <li>年龄：{{ post.age }}</li>
+                            <li>职业：{{ post.occupation }}</li>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="fix" style="height: 80px;"></div>
+    </div>
+
+    <div class="fix"></div>
+    <!-- 就业案例 结束 -->
+
+    <!-- 毕业风采 开始 -->
+    <div class="tb008">
+        <div class="main-wrap">
+            <div class="main-title black-title">
+                <p class="big-title">毕业学员风采</p>
+                <p class="second-title hidden" data-wow-delay="0.5s"></p>
+            </div>
+        </div>
+
+        <div class="window-back">
+            <div id="tb008" class="swiper-container">
+                <div class="col-md-first col-md-last swiper-wrapper">
+                    {% for post in traineepages %}
+                    <div class="swiper-slide col-md-3 col-md-first">
+                            {% with post.thumbnail_image as thumbnail_image %}
+                            <div class="img">
+                                {% image thumbnail_image fill-373x273 %}
+                            </div>
+                            {% endwith %}
+                            <div class="info-bg"></div>
+                            <div class="infob"></div>
+                            <div class="info">
+                                <a href="{% pageurl post %}" title="{{ post.title }}" class="btn">{{ post.title }}</a>
+                            </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <div id="swiper-button-tb008">
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"><i class="fa fa-angle-left"></i></div>
+                <div class="swiper-button-next"><i class="fa fa-angle-right"></i></div>
+            </div>
+
+
+            <div class="fix" style="height: 80px;"></div>
+
+            <div class="tb008-more">
+                <a href="#">申请试听</a>
+                <a href="/aboutcert/certhelp/">如何获取瑜伽教练证</a>
+            </div>
+
+            <div class="fix" style="height: 80px;"></div>
+        </div>
+    </div>
+
+    <div class="fix"></div>
+
+    <!-- 毕业风采 结束 -->
+
+{% endblock content %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static '/js/swiper.min.js' %}"></script>
+    <!-- Include plugin after Swiper -->
+    <script>
+      // Install Plugin To Swiper
+      // Swiper.use(myPlugin);
+
+      // Init Swiper
+      var swiperB = new Swiper('#banner', {
+        autoHeight: true,
+        slidesPerView: 1,
+        // spaceBetween: 30,
+        loop: true,
+        paginationClickable: true,
+        speed: 1000,
+        observer: true,
+        observeParents: true,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '#swiper-button-banner .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '#swiper-button-banner .swiper-button-next',
+          prevEl: '#swiper-button-banner .swiper-button-prev',
+        },
+        // Enable debugger
+        // debugger: true,
+      });
+
+      var Swiper5 = new Swiper ('#tb005', {
+        // autoHeight: true,
+        // slidesPerView: 5,
+        // slidesPerView: 'auto',
+        // slidesPerColumn: 2,
+        spaceBetween: 30,
+        loop: true,
+        slidesPerView : 'auto',
+        paginationClickable: true,
+        //slidesPerGroup: 5,
+        //loopFillGroupWithBlank: true,
+        //speed: 2000,
+        observer: true,
+        observeParents: true,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '#swiper-button-tb005 .swiper-pagination',
+        },
+        navigation: {
+          nextEl: '#swiper-button-tb005 .swiper-button-next',
+          prevEl: '#swiper-button-tb005 .swiper-button-prev',
+        },
+        // Enable debugger
+        // debugger: true,
+      });
+
+
+      var Swiper8 = new Swiper ('#tb008', {
+        // autoHeight: true,
+        // slidesPerView: 5,
+        // slidesPerView: 'auto',
+        // slidesPerColumn: 2,
+        spaceBetween: 30,
+        loop: true,
+        slidesPerView : 'auto',
+        paginationClickable: true,
+        //slidesPerGroup: 5,
+        //loopFillGroupWithBlank: true,
+        //speed: 2000,
+        observer: true,
+        observeParents: true,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '#swiper-button-tb008 .swiper-pagination',
+        },
+        navigation: {
+          nextEl: '#swiper-button-tb008 .swiper-button-next',
+          prevEl: '#swiper-button-tb008 .swiper-button-prev',
+        },
+        // Enable debugger
+        // debugger: true,
+      });
+
+
+    </script>
+
+{% endblock %}

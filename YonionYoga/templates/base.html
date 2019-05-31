@@ -1,0 +1,67 @@
+{% load static yonion_tags %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="zh_cn">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <!-- 手持设备样式 -->
+        <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/YonionYoga.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/themes/default/styles/css/global.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/themes/default/styles/css/swiper.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/themes/default/styles/css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/themes/default/styles/css/font-awesome.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/themes/default/styles/css/animate.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/themes/default/styles/css/iconfont.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/themes/default/styles/css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/themes/default/styles/css/jquery.eeyellow.Timeline.css' %}">
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+
+        {% endblock %}
+
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+
+        {% block header_extra_js %}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% include "header.html" %}
+
+        {% block content %}{% endblock %}
+
+        {% include "footer.html" %}
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/YonionYoga.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/plugs/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/plugs/wow.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/utils.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/tags.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.eeyellow.Timeline.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/common.js' %}"></script>
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+
+        {% endblock %}
+    </body>
+</html>

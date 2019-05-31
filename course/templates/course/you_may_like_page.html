@@ -1,0 +1,38 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<div class="bg-cnxh wow fadeInUp">
+    <div class="w1200">
+        <div class="main-title black-title">
+            <p class="big-title">猜你喜欢</p>
+            <p class="second-title" data-wow-delay="0.5s">workshop | 名师工作坊</p>
+            <div class="fix" style="height: 20px;"></div>
+        </div>
+
+        <div class="col-md-12 col-md-first col-md-last">
+            <div class="row p1">
+                {% for post in umaylike %}
+                <div class="col-md-4 col-md-first">
+                    <div class="sitewidget-bd">
+                        {% with post.main_image as main_image %}
+                        <a class="imgBox-msgf mobile-imgBox" href="{% pageurl post %}">
+                            {% image main_image fill-370x207 %}
+                            <span class="picture-description-bg hidden"></span>
+                            <span class="picture-description">
+                                <span class="ccc1"></span>
+                                <span class="ccc2"></span>
+                            </span>
+                        </a>
+                        {% endwith %}
+                    </div>
+                    <div class="sitewidget-bd2">
+                        <li class="ccc3">
+                            <a href="{% pageurl post %}" title="{{  post.title }}">{{  post.title }}</a>
+                        </li>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="fix" style="height:50px;"></div>
+            </div>
+        </div>
+    </div>
+</div>

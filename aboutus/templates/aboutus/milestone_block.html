@@ -1,0 +1,13 @@
+{% load wagtailimages_tags %}
+
+<dd class="{% ifequal value.direction "left" %} pos-left {% else %} pos-right {% endifequal %} clearfix">
+    <div class="circ"></div>
+    <div class="time">
+        {{ value.date }}
+    </div>
+    <div class="events">
+        <div class="events-header">
+            {{ value.event }}
+        </div>
+    </div>
+</dd>

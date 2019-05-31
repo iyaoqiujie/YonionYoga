@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-searchresults{% endblock %}
+
+{% block title %}搜索{% endblock %}
+
+{% block content %}
+    <div class="clear"></div><!-- 内容main开始 -->
+    <!-- banner -->
+    {% image wallpaper original as wallpaper_original %}
+    <div id="banner2" style="background: url('{{ wallpaper_original.url }}') center top / cover no-repeat;"></div>
+
+    <!-- content -->
+    <div class="product main-wrap" id="product">
+
+        <div class="col-md-12 col-md-first col-md-last">
+        <ul class="crumb_menu wow fadeInUp">
+        <div id="bread_crumbs">
+            <div class="crumb_box clear">
+                <ul class="crumb_menu">
+                    <li><a href="/">首页</a><span> ></span></li>
+                    <li><a href="/course/?cate=workshop">热门课程</a></li>
+                </ul>
+            </div>
+        </div>
+        </ul>
+        </div>
+
+
+        <!-- NewsList start -->
+        <div class="content col-md-12 col-md-first col-md-last wow fadeInUp">
+            {% if search_results %}
+                {%  for result in search_results  %}
+                {% with result=result.specific %}
+
+                    <div class="col-md-12 col-md-first col-md-last none-p">
+                    <div class="row">
+                        <div class="col-md-8 col-md-first">
+                            <div class="sitewidget-bd">
+                                <div class="k-box">
+                                    <div class="k-t1"><a href="{% pageurl result %}">{{ result.title }}</a></div>
+                                    <div class="fix"></div>
+                                    <div class="k-t3">
+                                        {% if result.intro %}
+                                            {{ result.intro|richtext }}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
+                    <div class="fix" style="height: 50px;"></div>
+                {% endwith %}
+                {% endfor %}
+
+
+
+
+                <!-- 分页开始 -->
+                <div id="page">
+                    <ul id="yw0" class="yiiPager">
+                        {% if search_results.has_previous %}
+                        <li class="prev_page">
+                            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">&laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for page_num in search_results.paginator.page_range %}
+                            <li class="page  {% if page_num == search_results.number %} selected {% endif %}">
+                                <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;&page={{ page_num }}">{{ page_num }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if search_results.has_next %}
+                        <li class="next_page">
+                            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">&raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="fix" style="height: 50px;"></div>
+                <!-- 分页结束 -->
+            {% elif search_query %}
+                抱歉，什么都没找到
+            {% endif %}
+
+            <div class="fix" style="height: 50px;"></div>
+        </div>
+
+
+
+        {% include "course/about_course_footer.html" %}
+
+    </div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  $(document).ready(function () {
+
+    $('.VivaTimeline').vivaTimeline({
+      carousel: true,
+      carouselTime: 3000
+    });
+
+    $("#submit_btn").click(function () {
+      var apply_name = $("#apply_name").val();
+      var apply_phone = $("#apply_phone").val();
+      var apply_content = $("#apply_content").val();
+      if (apply_name == "") {
+        $("#apply_name").addClass("has-error");
+        $("#apply_name").focus();
+        return false;
+      } else if (apply_phone == "") {
+        $("#apply_name").removeClass("has-error");
+        $("#apply_phone").addClass("has-error");
+        $("#apply_phone").focus();
+        return false;
+      } else if (apply_content == "") {
+        $("#apply_name").removeClass("has-error");
+        $("#apply_phone").removeClass("has-error");
+        $("#apply_content").addClass("has-error");
+        $("#apply_content").focus();
+        return false;
+      } else {
+        $("#apply_content").removeClass("has-error");
+        $("#apply_form").submit();
+      }
+    });
+  });
+
+
+  var wow = new WOW({
+    boxClass: 'wow',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+  });
+  wow.init();
+
+  function display(li){
+    li.className='sub active';
+    var subdis=li.getElementsByTagName("ul")[0];
+    subdis.style.display="block";
+  }
+  function ndisplay(li){
+    li.className='sub noactive';
+    var subdis=li.getElementsByTagName("ul")[0];
+    subdis.style.display="None";
+  }
+  var preBtn=document.querySelectorAll('.pre-btn');
+  for (var j=0; j<preBtn.length; j++) {
+    preBtn[j].onclick = function(){
+      this.style.display='none';
+      this.parentNode.querySelector('.pre-load').style.display='none';
+      myframe=this.parentNode.querySelector('iframe');
+      framesrc=myframe.attributes["data-src"].value;
+      myframe.setAttribute("src",framesrc);
+    }
+  }
+</script>
+{% endblock %}
