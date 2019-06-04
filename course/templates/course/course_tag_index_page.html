@@ -86,17 +86,17 @@
                     <ul class="pagination justify-content-center">
                         {% if coursepages.has_previous %}
                             <li class="page-item">
-                                <a class="page-link" href="?tag={{ tag }}&page={{ coursepages.previous_page_number }}">&laquo;</a>
+                                <a class="page-link" href="?{% if tag %}tag={{ tag }}&{% endif %}cate={{ cate }}&page={{ coursepages.previous_page_number }}">&laquo;</a>
                             </li>
                         {% endif %}
                         {% for page_num in coursepages.paginator.page_range %}
                             <li {% if page_num == coursepages.number %} class="active page-item"{% endif %}>
-                                <a class="page-link" href="?tag={{ tag }}&page={{ page_num }}">{{ page_num }}</a>
+                                <a class="page-link" href="?{% if tag %}tag={{ tag }}&{% endif %}cate={{ cate }}&page={{ page_num }}">{{ page_num }}</a>
                             </li>
                         {% endfor %}
                         {% if coursepages.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="?tag={{ tag }}&page={{ coursepages.next_page_number }}">&raquo;</a>
+                                <a class="page-link" href="?{% if tag %}tag={{ tag }}&{% endif %}cate={{ cate }}&page={{ coursepages.next_page_number }}">&raquo;</a>
                             </li>
                         {% endif %}
                     </ul>

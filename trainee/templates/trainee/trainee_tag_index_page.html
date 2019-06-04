@@ -130,15 +130,15 @@
                 <div id="page">
                     <ul id="yw0" class="yiiPager">
                         {% if traineepages.has_previous %}
-                        <li class="prev_page"><a href="?tag={{ tag }}&cate={{ cate }}&page={{ traineepages.previous_page_number }}">&laquo;</a></li>
+                        <li class="prev_page"><a href="?{% if tag %}tag={{ tag }}&{% endif %}cate={{ cate }}&page={{ traineepages.previous_page_number }}">&laquo;</a></li>
                         {% endif %}
                         {% for page_num in traineepages.paginator.page_range %}
                             <li class="page  {% if page_num == traineepages.number %} selected {% endif %}">
-                                <a href="?tag={{ tag }}&cate={{ cate }}&page={{ page_num }}">{{ page_num }}</a>
+                                <a href="?{% if tag %}tag={{ tag }}&{% endif %}cate={{ cate }}&page={{ page_num }}">{{ page_num }}</a>
                             </li>
                         {% endfor %}
                         {% if traineepages.has_next %}
-                        <li class="next_page"><a href="tag={{ tag }}&cate={{ cate }}&page={{ traineepages.next_page_number }}">&raquo;</a></li>
+                        <li class="next_page"><a href="{% if tag %}tag={{ tag }}&{% endif %}cate={{ cate }}&page={{ traineepages.next_page_number }}">&raquo;</a></li>
                         {% endif %}
                     </ul>
                 </div>
