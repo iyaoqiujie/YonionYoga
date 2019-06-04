@@ -39,11 +39,25 @@
                         有你瑜伽学院                </em>
                 </div>
             </div>
-            <div align="center">
+            <div style="text-indent:2em;text-align: left;">
                 {% with page.banner_image as banner_image %}
+                    <p align="center">
                     {% image banner_image width-1000 %}
+                    </p>
                 {% endwith %}
-                {% include_block page.body %}
+                {% for block in page.body %}
+                    {% if block.block_type == "图片" %}
+                        <p align="center">
+                        {% image block.value width-1000 %}
+                        </p>
+                    {% elif block.block_type == "标题" %}
+                        <h2 style="text-align: center;">{{ block.value }}</h2>
+                    {% else %}
+                        {% include_block block %}
+                    {% endif %}
+                {% endfor %}
+
+
             </div>
 
             <div class="fix" style="height: 50px;"></div>
