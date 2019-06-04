@@ -39,7 +39,7 @@
                         有你瑜伽学院                </em>
                 </div>
             </div>
-            <div style="text-indent:2em;text-align: left;">
+            <div class="content_text" style="text-indent:2em;text-align: left;">
             {% if page.category == "story" %}
                {% for block in page.body %}
                     {% if block.block_type == "图片" %}
@@ -47,9 +47,7 @@
                         {% image block.value width-1000 %}
                         </p>
                     {% elif block.block_type == "标题" %}
-                        <h2 align="center">
-                            {% include_block block %}
-                        </h2>
+                        <h2 style="text-align: center;">{{ block.value }}</h2>
                     {% else %}
                         {% include_block block %}
                     {% endif %}

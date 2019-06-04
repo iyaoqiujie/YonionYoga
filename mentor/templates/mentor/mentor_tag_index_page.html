@@ -28,7 +28,7 @@
         <div class="nav2 wow fadeInUp">
 
             <a href="{% slugurl 'mentor' %}?cate=signing" {% if cate == 'signing' %} class="on" {% endif %}>签约导师</a>
-            <a href="{% slugurl 'mentor' %}?cate=cooperate" {% if cate == 'cooperate' %} class="on" {% endif %}>合作导师</a>
+            <a href="{% slugurl 'mentor' %}?cate=cooperation" {% if cate == 'coperation' %} class="on" {% endif %}>合作导师</a>
             <a href="{% slugurl 'mentor' %}?cate=infinite" {% if cate == 'infinite' %} class="on" {% endif %}>无界导师</a>
         </div>
 
@@ -60,7 +60,7 @@
                             <div class="col-md-6 col-md-last">
                                 <div class="sitewidget-bd">
                                     <div class="k-box">
-                                        <div class="k-t1"><a href="{% pageurl mentorpage %}">{{ mentorpage.title }}({{ mentorpage.mentortitle }})</a></div>
+                                        <div class="k-t1"><a href="{% pageurl mentorpage %}">{{ mentorpage.title }}</a></div>
                                         <div class="fix"></div>
                                         <div class="k-t2">{{ mentorpage.mentortitle }}</div>
                                         <div class="fix"></div>
