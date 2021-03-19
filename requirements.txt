@@ -10,7 +10,7 @@ django-modelcluster==4.4
 django-redis==4.10.0
 django-taggit==0.24.0
 django-treebeard==4.3
-djangorestframework==3.9.3
+djangorestframework==3.11.2
 draftjs-exporter==2.1.5
 gevent==1.4.0
 greenlet==0.4.15
