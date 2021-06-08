@@ -18,7 +18,7 @@ gunicorn==19.9.0
 html5lib==1.0.1
 idna==2.8
 mysqlclient==1.4.2.post1
-Pillow==5.4.1
+Pillow==8.2.0
 PySnooper==0.0.38
 pytz==2019.1
 redis==3.2.1
